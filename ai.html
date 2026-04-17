@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joke Generator Game</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #6dd5ed, #2193b0);
+        color: white;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 100px auto;
+        background: rgba(0,0,0,0.2);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    select, button {
+        padding: 10px;
+        font-size: 16px;
+        margin: 10px;
+        border-radius: 8px;
+        border: none;
+    }
+
+    button {
+        background-color: #ffcc00;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background-color: #ffdb4d;
+    }
+
+    #jokeBox {
+        margin-top: 20px;
+        font-size: 18px;
+        min-height: 60px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>😂 Joke Generator Game</h1>
+
+    <p>Select a joke genre:</p>
+    <select id="genre">
+        <option value="dad">Dad Jokes</option>
+        <option value="tech">Tech Jokes</option>
+        <option value="school">School Jokes</option>
+    </select>
+
+    <br>
+    <button onclick="generateJoke()">Tell Me a Joke</button>
+
+    <div id="jokeBox"></div>
+</div>
+
+<script>
+    const jokes = {
+        dad: [
+            "Why don't skeletons fight each other? They don't have the guts.",
+            "I only know 25 letters of the alphabet. I don’t know y.",
+            "Why did the scarecrow win an award? Because he was outstanding in his field!"
+        ],
+        tech: [
+            "Why do programmers prefer dark mode? Because light attracts bugs.",
+            "I just got fired from the keyboard factory. They said I wasn't putting in enough shifts.",
+            "Why did the computer go to therapy? It had too many bytes of trauma."
+        ],
+        school: [
+            "Why was the math book sad? It had too many problems.",
+            "Why did the student eat his homework? Because the teacher said it was a piece of cake.",
+            "What do you call a teacher who never farts? A private tutor."
+        ]
+    };
+
+    function generateJoke() {
+        const genre = document.getElementById("genre").value;
+        const jokeList = jokes[genre];
+        const randomIndex = Math.floor(Math.random() * jokeList.length);
+        document.getElementById("jokeBox").innerText = jokeList[randomIndex];
+    }
+</script>
+
+</body>
+</html>
